@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 . "${0%/*}/h"
+message="$(cat $1)"
 requiredPattern="^(feat|fix|style|refactor|test|cd|docs|chore): .*$"
 if ! [[ $message =~ $requiredPattern ]];
 then
