@@ -16,6 +16,9 @@ export default {
                 };
             },
         },
+        fontFamily: {
+            "sans": "Be Vietnam Pro"
+        }
     },
     plugins: [],
 };
