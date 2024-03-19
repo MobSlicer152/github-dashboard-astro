@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "${0%/*}/h"
+requiredPattern="^(feat|fix|style|refactor|test|cd|docs|chore): .*$"
+exit 1
