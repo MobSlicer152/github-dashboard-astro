@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+message="$(cat $1)"
+requiredPattern="^(feat|fix|style|refactor|test|cd|docs|chore): .*$"
+if ! [[ $message =~ $requiredPattern ]];
+then
+    echo "Invalid commit message:"
+    echo "$message"
+    echo "It should look like \"fix: make image display properly\", see .husky/commit-msg"
+    exit 1
+fi
