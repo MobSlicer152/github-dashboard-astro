@@ -1,6 +1,7 @@
 ---
 import type { Repository } from "../util";
-import { Repositories } from "../components/Repositories";
+import Repositories from "../components/Repositories.astro";
+import {UserInfo} from "../components/UserInfo.tsx";
 import heroImage from "../images/hero-image-github-profile.png";
 
 const repos: Repository[] = [
@@ -8,8 +9,16 @@ const repos: Repository[] = [
         url: "MobSlicer152/pong",
         name: "pong",
         description: "a pong clone",
-        forks: 0,
-        stars: 1,
+        forks: 32,
+        stars: 12,
+        lastUpdate: 0
+    },
+    {
+        url: "MobSlicer152/pong",
+        name: "pong",
+        description: "a pong clone",
+        forks: 100,
+        stars: 50,
         lastUpdate: 0
     },
     {
@@ -18,6 +27,14 @@ const repos: Repository[] = [
         description: "a pong clone",
         forks: 0,
         stars: 1,
+        lastUpdate: 1700020000
+    },
+    {
+        url: "MobSlicer152/pong",
+        name: "pong",
+        description: "a pong clone",
+        forks: 15,
+        stars: 325,
         lastUpdate: 0
     }
 ];
@@ -40,8 +57,11 @@ const repos: Repository[] = [
             <!-- TODO: search bar -->
             <img src={heroImage.src} />
         </div>
+        <div>
+            <UserInfo client:only="react" name="MobSlicer152" />
+        </div>
         <div class="bg-back">
-            <Repositories repos={repos} client:only="react" />
+            <Repositories repos={repos} />
         </div>
     </body>
 </html>
