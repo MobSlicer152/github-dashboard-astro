@@ -1,0 +1,18 @@
+---
+import UserBioCard from "./UserBioCard.astro";
+
+interface Props {
+    user: any
+};
+
+const {user} = Astro.props;
+---
+
+<div class="relative -top-14">
+    <div class="flex">
+        <img class="rounded-3xl border-8 border-back w-32 h-32" src={user.data.avatar_url} />
+        <UserBioCard class="relative top-3" label="Followers">{user.data.followers.toString()}</UserBioCard>
+    </div>
+    <h1 class="text-3xl pt-6">{user.data.name}</h1>
+    <h2 class="text-description">{user.data.bio}</h2>
+</div>

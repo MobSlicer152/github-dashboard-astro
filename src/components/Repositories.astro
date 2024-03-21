@@ -9,7 +9,7 @@ interface Props {
 const {repos} = Astro.props;
 ---
 
-<div class="mx-auto w-2/3 gap-8 grid-cols-2 grid">
+<div class="gap-8 grid-cols-2 grid">
     {repos.map((repo) => {
         return <RepositoryCard repo={repo} />;
     })}
