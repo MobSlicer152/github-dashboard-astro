@@ -1,46 +1,12 @@
 ---
-import type { Repository } from "../util";
-import {getUser} from "../util";
+import {getUser, getRepos} from "../util";
 import Repositories from "../components/Repositories.astro";
 import UserInfo from "../components/UserInfo.astro";
 import heroImage from "../images/hero-image-github-profile.png";
 
 const user = await getUser("MobSlicer152");
 
-const repos: Repository[] = [
-    {
-        url: "MobSlicer152/pong",
-        name: "pong",
-        description: "a pong clone",
-        forks: 32,
-        stars: 12,
-        lastUpdate: 0
-    },
-    {
-        url: "MobSlicer152/pong",
-        name: "pong",
-        description: "a pong clone",
-        forks: 100,
-        stars: 50,
-        lastUpdate: 0
-    },
-    {
-        url: "MobSlicer152/pong",
-        name: "pong",
-        description: "a pong clone",
-        forks: 0,
-        stars: 1,
-        lastUpdate: 1700020000
-    },
-    {
-        url: "MobSlicer152/pong",
-        name: "pong",
-        description: "a pong clone",
-        forks: 15,
-        stars: 325,
-        lastUpdate: 0
-    }
-];
+const repos = await getRepos(user, 4);
 ---
 
 <html>
@@ -60,7 +26,7 @@ const repos: Repository[] = [
             <!-- TODO: search bar -->
             <img src={heroImage.src} />
         </div>
-        <div class="mx-auto w-2/3">
+        <div class="mx-auto w-4/5 lg:w-2/3">
             <div>
                 <UserInfo user={user} />
             </div>

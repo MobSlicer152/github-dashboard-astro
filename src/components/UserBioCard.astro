@@ -1,13 +1,12 @@
 ---
 interface Props {
-    class: string,
     label: string
 };
 
-const {class: className, label} = Astro.props;
+const {label} = Astro.props;
 ---
 
-<div class=`${className} grid grid-cols-2 divide-x divide-main rounded-3xl bg-dark p-4 gap-1`>
+<div class="grid grid-cols-2 divide-x divide-description rounded-2xl bg-dark p-3 gap-1">
     <div class="p-2 text-description">{label}</div>
     <div class="p-2"><slot /></div>
 </div>

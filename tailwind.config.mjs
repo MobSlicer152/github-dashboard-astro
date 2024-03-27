@@ -3,7 +3,7 @@ export default {
     content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
     theme: {
         extend: {
-            colors(theme) {
+            colors() {
                 return {
                     dark: "#111729",
 					accent: "#1D1848",

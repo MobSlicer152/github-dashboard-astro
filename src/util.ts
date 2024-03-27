@@ -1,22 +1,24 @@
 import { Octokit } from "octokit";
 
-export interface Repository {
-  url: String;
-  name: String;
-  description: String;
-  license?: String;
-  forks: number;
-  stars: number;
-  lastUpdate: EpochTimeStamp;
-}
-
 export const octokit = new Octokit({});
 
-export const getUser = (name: string) => {
-  return octokit.request("GET /users/{username}", {
+export const getUser = async (name: string) => {
+  const response = await octokit.request("GET /users/{username}", {
     username: name,
-    headers: {
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
   });
+  return response.data;
 };
+
+export const getRepos = async (user: any, count: number) => {
+  if ("name" in user) {
+    const response = await octokit.request("GET /users/{username}/repos", {
+      username: user.login,
+      per_page: count,
+      page: 1,
+      sort: "updated"
+    });
+    return response.data;
+  } else {
+    return null;
+  }
+}

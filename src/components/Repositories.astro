@@ -1,16 +1,20 @@
 ---
-import type { Repository } from "../util.ts";
 import {RepositoryCard} from "./RepositoryCard.tsx";
 
 interface Props {
-    repos: Repository[];
+    repos: any[] | undefined | null;
 };
 
-const {repos} = Astro.props;
+var {repos} = Astro.props;
+if (repos == null) {
+    repos = [];
+}
 ---
 
-<div class="gap-8 grid-cols-2 grid">
-    {repos.map((repo) => {
-        return <RepositoryCard repo={repo} />;
-    })}
+<div class="gap-8 lg:grid-cols-2 grid">
+    {
+        repos.map((repo) => {
+            return <RepositoryCard repo={repo} />;
+        })
+    }
 </div>

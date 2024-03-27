@@ -8,11 +8,17 @@ interface Props {
 const {user} = Astro.props;
 ---
 
-<div class="relative -top-14">
-    <div class="flex">
-        <img class="rounded-3xl border-8 border-back w-32 h-32" src={user.data.avatar_url} />
-        <UserBioCard class="relative top-3" label="Followers">{user.data.followers.toString()}</UserBioCard>
+<div>
+    <div class="flex relative -top-12">
+        <img class="rounded-3xl border-8 border-back w-32 h-32" src={user.avatar_url} />
+        <div class="relative top-14 lg:h-16 grid ml-10 gap-5 gap-y-5 grid-rows-3 lg:grid-rows-1 lg:grid-cols-3">
+            <UserBioCard label="Followers">{user.followers}</UserBioCard>
+            <UserBioCard label="Following">{user.following}</UserBioCard>
+            <UserBioCard label="Location">{user.location ? user.location : "Unknown"}</UserBioCard>
+        </div>
     </div>
-    <h1 class="text-3xl pt-6">{user.data.name}</h1>
-    <h2 class="text-description">{user.data.bio}</h2>
+    <div class="relative py-6 lg:py-0 lg:-top-6">
+        <h1 class="text-3xl">{user.name}</h1>
+        <h2 class="text-description">{user.bio}</h2>
+    </div>
 </div>
